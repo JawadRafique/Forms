@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <h1 class="page-title">Student Detials</h1>
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text"
+                 class="form-control"
+                 formControlName="name">
+        </div>
+        <div class="form-group">
+          <label for="fname">Father Name</label>
+          <input type="text"
+                 class="form-control"
+                 formControlName="fname">
+        </div>
+        <div class="form-group">
+          <label for="mname">Mother Name</label>
+          <input type="text"
+                 class="form-control"
+                 formControlName="mname">
+        </div>
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number"
+                 class="form-control"
+                 formControlName="age">
+        </div>
+        <div class="form-group">
+          <label for="class">Class</label>
+          <input type="text"
+                 class="form-control"
+                 formControlName="class">
+        </div>
+<!--         
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email"
+                 class="form-control"
+                 formControlName="email">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password"
+                 class="form-control"
+                 formControlName ="password">
+        </div> -->
+        
+        <button
+        [disabled]="!loginForm.valid"
+        type="submit" 
+        class="btn btn-warning" (click)="submit()"
+        >Add Student</button>
+      </form>
+    </div>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th >Name</th>
+      <th >Father Name</th>
+      <th >Mother Name</th>
+      <th >Age</th>
+      <th >Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let arr of login">
+      <td>{{arr.name}}</td>
+      <td>{{arr.fname}}</td>
+      <td>{{arr.mname}}</td>
+      <td>{{arr.age}}</td>
+      <td>{{arr.class}}</td>    
+    </tr>
+
+  </tbody>
+</table>
+<router-outlet></router-outlet>
