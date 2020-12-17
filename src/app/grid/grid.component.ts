@@ -41,14 +41,15 @@ export class GridComponent implements OnInit {
   // add: [{ name: '', fname: 'S2', mname: '', age: '', class: '' }]
   //    });
     // debugger
-
-
   // Adding data to login array   
   this.login.push(this.loginForm.value)
   // console.log(this.loginForm)
-
+  this.agGrid?.api.setRowData([]);
   // Adding data to grid row 
   this.rowData = this.login
+  console.log(this.login)
   this.agGrid?.api.applyTransaction({ add: this.rowData })
-  }
+  
+}
+  
 }
