@@ -3,17 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import{ FormsModule, ReactiveFormsModule } from '@angular/forms'
+import{ FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GridComponent } from './grid/grid.component';
+import { StudentComponent } from './student/student.component'
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GridComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent]
