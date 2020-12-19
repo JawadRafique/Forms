@@ -1,7 +1,7 @@
 
 <div class="container">
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-5 py-4">
         <h1 class="page-title">Student Detials</h1>
         <form [formGroup]="loginForm">
           <div class="form-group">
@@ -34,7 +34,42 @@
                    class="form-control"
                    formControlName="class">
           </div>
+        </form>
+        <button class="btn btn-primary mr-2 mb-2" (click)="onAddRow()">Add Row</button>
+        <button class="btn btn-primary mr-2 mb-2" (click)="getSelectedRows()">Selected Row</button>
+        <button class="btn btn-primary mr-2 mb-2" (click)="onDeleteRow()">Delete Row</button>
+        <button class="btn btn-primary mr-2 mb-2" (click)="onDeleteRow()">Edit Row</button>
+        
+        <!-- Button For Modal -->
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+          Edit
+        </button> -->
 
-<button class="btn btn-primary mb-3" (click)="onAddRow()">Add Row</button>
-<ag-grid-angular style="width: 1000px; height: 500px;" class="ag-theme-alpine" [rowData]="rowData" #agGrid [columnDefs]="columnDefs">
-</ag-grid-angular>
+      </div>
+      <div class="col-md-6 py-4">
+        <ag-grid-angular style=" height: 500px;" class="ag-theme-alpine" [rowData]="rowData" #agGrid [columnDefs]="columnDefs" rowSelection="single">
+        </ag-grid-angular>
+      </div>
+    </div>
+  </div>      
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
