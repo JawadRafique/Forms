@@ -10,6 +10,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class GridComponent implements OnInit {
   loginForm: FormGroup |any;
   login : any =[];
+  rowData = [] ;
+  loginchange : any ;
+
 
   columnDefs = [
     { field: 'name', sortable: true, filter: true },
@@ -19,7 +22,7 @@ export class GridComponent implements OnInit {
     { field: 'class', sortable: true, filter: true }
 ];
 
-  rowData = [] ;
+  
 
   @ViewChild('agGrid') agGrid?: AgGridAngular;
   
@@ -61,7 +64,6 @@ getSelectedRows() {
   // Getting data of selected node in ag grid
   const selectedNodes = this.agGrid?.api.getSelectedNodes();
   const selectedData = selectedNodes?.map(node => node.data );
-  console.log(selectedData)
 
   // Storing data on variable 
   const namee = String(selectedData?.map(node => node.name))
@@ -69,8 +71,6 @@ getSelectedRows() {
   const mnamee = String(selectedData?.map(node => node.mname))
   const agee = Number(selectedData?.map(node => node.age))
   const classs = String(selectedData?.map(node => node.class))
-
-  console.log(namee)
 
   // Adding variable data to form 
   this.loginForm = this.fb.group({
@@ -88,5 +88,35 @@ onDeleteRow()
 	var selectedData = this.agGrid?.api.getSelectedRows();
 	this.agGrid?.api.updateRowData({ remove: selectedData });
 }
+
+onEditRow() {
+
+  // Getting data of selected node in ag grid
+  const selectedNodes = this.agGrid?.api.getSelectedNodes();
+  const selectedData = selectedNodes?.map(node => node.data );
+  const namee = String(selectedData?.map(node => node.name));
+  console.log(selectedData)
+  console.log(namee)
+  
+  this.getSelectedRows = this.loginForm.value
+  this.loginchange = this.getSelectedRows
+  console.log(this.loginchange)
+
+  for (var i = 0; i < this.loginForm.length; i++) {
+    if (this.loginForm[i].name === namee) {
+      this.loginForm[i]=this.loginchange;
+      this.agGrid?.api.setRowData(this.loginForm)
+    }
+  }
+
+
+
+  // this.agGrid?.api.setRowData(this.loginchange)
+  // const rowNode = this.agGrid?.api.getRowNode()
+  // console.log(rowNode)
+
+  
+}
+
 
 }
